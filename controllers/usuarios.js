@@ -9,15 +9,69 @@ async function verUsuarios(req, res) {
   res.json(usuarios);
 }
 
+async function verUsuario(req, res) {
+  const { id } = req.params;
+  const usuario = await Usuario.findById(id);
+  let usuarioHtml = `${usuario}`;
+  res.json(usuario);
+}
+
 async function crearUsuario(req, res) {
-  const { nombre, email, password } = req.body;
-  const usuario = new Usuario({
+  const {
+    dni,
     nombre,
+    apellido,
+    edad,
+    fechaNacimiento,
+    genero,
+    direccion,
+    telefono,
+    email,
+    password,
+  } = req.body;
+  const usuario = new Usuario({
+    dni,
+    nombre,
+    apellido,
+    edad,
+    fechaNacimiento,
+    genero,
+    direccion,
+    telefono,
     email,
     password,
   });
   await usuario.save();
   res.json("usuario creado");
+}
+
+async function modificarUsuario(req, res) {
+  const { id } = req.params;
+  const {
+    dni,
+    nombre,
+    apellido,
+    edad,
+    fechaNacimiento,
+    genero,
+    direccion,
+    telefono,
+    email,
+    password,
+  } = req.body;
+  let usuario = await Usuario.findByIdAndUpdate(_id, {
+    dni,
+    nombre,
+    apellido,
+    edad,
+    fechaNacimiento,
+    genero,
+    direccion,
+    telefono,
+    email,
+    password,
+  });
+  usuario = await usuario.save();
 }
 
 async function eliminarUsuario(req, res) {
@@ -28,6 +82,8 @@ async function eliminarUsuario(req, res) {
 
 module.exports = {
   verUsuarios,
+  verUsuario,
   crearUsuario,
+  modificarUsuario,
   eliminarUsuario,
 };
