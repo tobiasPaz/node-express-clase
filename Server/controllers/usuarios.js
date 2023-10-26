@@ -17,27 +17,12 @@ async function verUsuario(req, res) {
 }
 
 async function crearUsuario(req, res) {
-  const {
-    dni,
-    nombre,
-    apellido,
-    edad,
-    fechaNacimiento,
-    genero,
-    direccion,
-    telefono,
-    email,
-    password,
-  } = req.body;
+  const { nombre, apellido, edad, genero, email, password } = req.body;
   const usuario = new Usuario({
-    dni,
     nombre,
     apellido,
     edad,
-    fechaNacimiento,
     genero,
-    direccion,
-    telefono,
     email,
     password,
   });
@@ -47,27 +32,12 @@ async function crearUsuario(req, res) {
 
 async function modificarUsuario(req, res) {
   const { id } = req.params;
-  const {
-    dni,
+  const { nombre, apellido, edad, genero, email, password } = req.body;
+  let usuario = await Usuario.findByIdAndUpdate(id, {
     nombre,
     apellido,
     edad,
-    fechaNacimiento,
     genero,
-    direccion,
-    telefono,
-    email,
-    password,
-  } = req.body;
-  let usuario = await Usuario.findByIdAndUpdate(_id, {
-    dni,
-    nombre,
-    apellido,
-    edad,
-    fechaNacimiento,
-    genero,
-    direccion,
-    telefono,
     email,
     password,
   });
