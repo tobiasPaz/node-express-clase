@@ -1,25 +1,25 @@
-const inputNombre = document.querySelector("#nombre");
-const inputApellido = document.querySelector("#apellido");
-const inputGenero = document.querySelector("#genero");
-const inputEdad = document.querySelector("#edad");
-const inputEmail = document.querySelector("#email");
-const inputPassword = document.querySelector("#password");
+const inputNombre = document.querySelector("#name-usuario");
+const inputApellido = document.querySelector("#last-name-usuario");
+const inputGenero = document.querySelector("#gender-usuario");
+const inputEdad = document.querySelector("#age-usuario");
+const inputEmail = document.querySelector("#email-usuario");
+const inputPassword = document.querySelector("#password-usuario");
 const recibir = document.querySelector("#enviar");
 
 recibir.addEventListener("click", async (event) => {
   event.preventDefault();
   const Nombre = inputNombre.value;
   const Apellido = inputApellido.value;
-  const Edad = inputEdad.value;
   const Genero = inputGenero.value;
+  const Edad = inputEdad.value;
   const Email = inputEmail.value;
   const Password = inputPassword.value;
 
   let Persona = {
     nombre: Nombre,
     apellido: Apellido,
-    edad: Edad,
     genero: Genero,
+    edad: Edad,
     email: Email,
     password: Password,
   };
@@ -30,7 +30,19 @@ recibir.addEventListener("click", async (event) => {
     headers: {
       "Content-type": "application/json; charset=UTF-8",
     },
-  }).then(() => {
-    console.log(`fue exitosamente enviados`);
-  });
+  })
+    .then(() => {
+      console.log(`fue exitosamente enviados`);
+    })
+    .then(() => {
+      inputNombre.value = "";
+      inputApellido.value = "";
+      inputGenero.value = "";
+      inputEdad.value = "";
+      inputEmail.value = "";
+      inputPassword.value = "";
+    })
+    .then(() => {
+      window.location.replace("../../views/usuarios/ver-usuarios.html");
+    });
 });

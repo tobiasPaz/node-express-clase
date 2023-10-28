@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../../static/CSS/usuarios/ver-usuario.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="filtro"></div>
+    <div class="mi-modal display-0" id="modal-editar">
+      <h1>Editar</h1>
+      <div id="editar-datos">
+        <label for="nombre-usuario" class="form-label"
+          >Nombre<input type="text" id="nombre-usuario"
+        /></label>
+        <label for="apellido-usuario" class="form-label"
+          >Apellido<input type="text" id="apellido-usuario"
+        /></label>
+        <label for="genero-usuario" class="form-label"
+          >Genero<input type="text" id="genero-usuario"
+        /></label>
+        <label for="edad-usuario" class="form-label"
+          >Edad<input type="text" id="edad-usuario"
+        /></label>
+        <label for="email-usuario" class="form-label"
+          >Email<input type="text" id="email-usuario"
+        /></label>
+        <label for="password-usuario" class="form-label"
+          >Password<input type="text" id="password-usuario"
+        /></label>
+      </div>
+      <div class="botones-end">
+        <button class="btn-less btn-red" id="btn-cancelar-editar">
+          cancelar
+        </button>
+        <button class="btn-less btn-primary" id="btn-ok-editar">hecho</button>
+      </div>
+    </div>
+
+    <h1 id="titulo-usuario">Usuario:</h1>
+    <div id="datos-usuario"></div>
+
+    <button class="btn btn-dark" id="btn-editar">editar usuario</button>
+
+    <script src="../../static/Js/usuarios/ver-usuario.js"></script>
+  </body>
+</html>
