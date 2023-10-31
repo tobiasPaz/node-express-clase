@@ -39,7 +39,7 @@
           >Email<input type="text" id="email-usuario"
         /></label>
         <label for="password-usuario" class="form-label"
-          >Password<input type="text" id="password-usuario"
+          >Password<input type="password" id="password-usuario"
         /></label>
       </div>
       <div class="botones-end">
@@ -51,8 +51,17 @@
     </div>
 
     <h1 id="titulo-usuario">Usuario:</h1>
-    <div id="datos-usuario"></div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody id="datos-usuario"></tbody>
+    </table>
 
+    <button class="btn btn-dark" id="btn-volver">volver</button>
     <button class="btn btn-dark" id="btn-editar">editar usuario</button>
 
     <script src="../../static/Js/usuarios/ver-usuario.js"></script>

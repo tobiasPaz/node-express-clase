@@ -39,6 +39,18 @@ app.get("/", (req, res) => {
 
 app.use("/usuarios", routerUsuarios);
 
+app.use("*", (req, res) => {
+  res.status(404).json({
+    ok: false,
+    descripcion: `ruta no encontrada`,
+  });
+});
+
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send("Error interno del servidor");
+});
+
 app.listen(port, () => {
   console.log(`el servidor esta corriendo en http://localhost:${port}`);
 });

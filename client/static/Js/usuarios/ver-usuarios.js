@@ -40,7 +40,7 @@ async function cargar_tabla() {
   for (let i = 0; i < btn_inf.length; i++) {
     btn_inf[i].addEventListener("click", async (event) => {
       localStorage.setItem("idUsuario", btn_inf[i].value);
-      window.location.href = "../../views/usuarios/ver-usuario.html";
+      window.location.replace("../../views/usuarios/ver-usuario.html");
     });
   }
 }
