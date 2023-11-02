@@ -1,22 +1,28 @@
 const Usuario = require("../models/usuario");
 
-async function verUsuarios(req, res) {
+function catchAsync(fn) {
+  return (req, res, next) => {
+    fn(req, res, next).catch((err) => next(err));
+  };
+}
+
+const verUsuarios = catchAsync(async (req, res) => {
   const usuarios = await Usuario.find();
   let usuariosHtml = ``;
   for (const usuario of usuarios) {
     usuariosHtml += `${usuario}`;
   }
   res.json(usuarios);
-}
+});
 
-async function verUsuario(req, res) {
+const verUsuario = catchAsync(async (req, res) => {
   const { id } = req.params;
   const usuario = await Usuario.findById(id);
   let usuarioHtml = `${usuario}`;
   res.json(usuario);
-}
+});
 
-async function crearUsuario(req, res) {
+const crearUsuario = catchAsync(async (req, res) => {
   const { nombre, apellido, edad, genero, email, password } = req.body;
   const usuario = new Usuario({
     nombre,
@@ -28,9 +34,9 @@ async function crearUsuario(req, res) {
   });
   await usuario.save();
   res.json("usuario creado");
-}
+});
 
-async function modificarUsuario(req, res) {
+const modificarUsuario = catchAsync(async (req, res) => {
   const { id } = req.params;
   const { nombre, apellido, edad, genero, email, password } = req.body;
   let usuario = await Usuario.findByIdAndUpdate(id, {
@@ -42,13 +48,13 @@ async function modificarUsuario(req, res) {
     password,
   });
   usuario = await usuario.save();
-}
+});
 
-async function eliminarUsuario(req, res) {
+const eliminarUsuario = catchAsync(async (req, res) => {
   const { id } = req.params;
   await Usuario.findByIdAndDelete(id);
   res.json("usuario eliminado");
-}
+});
 
 module.exports = {
   verUsuarios,

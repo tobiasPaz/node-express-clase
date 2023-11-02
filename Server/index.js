@@ -39,16 +39,19 @@ app.get("/", (req, res) => {
 
 app.use("/usuarios", routerUsuarios);
 
-app.use("*", (req, res) => {
+app.use("*", (req, res) => 
+{
   res.status(404).json({
     ok: false,
     descripcion: `ruta no encontrada`,
   });
 });
 
-app.use(function (err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).send("Error interno del servidor");
+app.use((err, req, res, next) => {
+  res.status(500).json({
+    ok: false,
+    error: err,
+  });
 });
 
 app.listen(port, () => {

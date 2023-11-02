@@ -8,8 +8,8 @@ const {
 } = require("../controllers/usuarios.js");
 
 routerUsuarios.get("/", verUsuarios);
-routerUsuarios.get("/:id", verUsuario);
 routerUsuarios.post("/", crearUsuario);
+routerUsuarios.get("/:id", verUsuario);
 routerUsuarios.put("/:id", modificarUsuario);
 routerUsuarios.delete("/:id", eliminarUsuario);
 
